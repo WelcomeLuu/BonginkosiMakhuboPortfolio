@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonginkosi Blessin Makhubo | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- SUMMER VIBE VARIABLES --- */
+        :root {
+            --sun-yellow: #FFD93D;
+            --sunset-orange: #FF6B6B;
+            --ocean-teal: #4ECDC4;
+            --sand-white: #F7FFF7;
+            --deep-blue: #1A535C;
+            --text-dark: #2D3436;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--sand-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+        }
+
+        a {
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: var(--deep-blue);
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--sunset-orange);
+        }
+
+        .nav-links a {
+            margin-left: 30px;
+            color: var(--deep-blue);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background: var(--ocean-teal);
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #FF6B6B, #FFD93D);
+            position: relative;
+            padding: 0 5%;
+            overflow: hidden;
+        }
+
+        /* Decorative Background Circles */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+        }
+        .c1 { width: 300px; height: 300px; top: -50px; left: -50px; }
+        .c2 { width: 500px; height: 500px; bottom: -100px; right: -100px; }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            animation: slideIn 1s ease-out;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 10px;
+        }
+
+        .btn-primary {
+            background: var(--deep-blue);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--sunset-orange);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* --- SECTIONS --- */
+        section {
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            background: var(--sun-yellow);
+            bottom: 5px;
+            z-index: -1;
+            opacity: 0.6;
+            transform: skewX(-20deg);
+        }
+
+        /* --- EXPERIENCE CARDS --- */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.4s;
+            border-bottom: 5px solid var(--ocean-teal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: var(--deep-blue);
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .card .company {
+            color: var(--sunset-orange);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card ul {
+            list-style: none;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .card ul li::before {
+            content: '☀️';
+            position: absolute;
+            left: 0;
+            font-size: 0.8rem;
+        }
+
+        /* --- SKILLS --- */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skill-pill {
+            padding: 10px 25px;
+            background: white;
+            border-radius: 30px;
+            font-weight: 600;
+            color: var(--deep-blue);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 2px solid var(--ocean-teal);
+            transition: 0.3s;
+        }
+
+        .skill-pill:hover {
+            background: var(--ocean-teal);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* --- ACHIEVEMENTS --- */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .achievement-item {
+            background: linear-gradient(135deg, var(--ocean-teal), #2ecc71);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        /* --- EDUCATION --- */
+        .edu-item {
+            background: #fff;
+            border-left: 5px solid var(--sun-yellow);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* --- CONTACT / FOOTER --- */
+        footer {
+            background: var(--deep-blue);
+            color: white;
+            text-align: center;
+            padding: 60px 5% 40px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: var(--sun-yellow);
+            margin-bottom: 10px;
+            transition: 0.3s;
+        }
+
+        .contact-item:hover i {
+            transform: rotate(15deg) scale(1.2);
+            color: var(--sunset-orange);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            nav { flex-direction: column; padding-bottom: 10px; }
+            .nav-links { margin-top: 15px; }
+            .nav-links a { margin: 0 10px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Bonginkosi<span>.</span></div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        <div class="hero-content">
+            <img src="https://ui-avatars.com/api/?name=Bonginkosi+Makhubo&background=2D3436&color=fff&size=200" alt="Bonginkosi Profile" class="profile-img">
+            <h1>Bonginkosi Blessin Makhubo</h1>
+            <p>Mechanical Mind. Digital Soul. <br> Artisan Assistant & Aspiring Marketer.</p>
+            <br>
+            <a href="#contact" class="btn btn-primary">Let's Connect</a>
+            <a href="#experience" class="btn btn-secondary">See My Work</a>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2 class="section-title">Who Am I?</h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.1rem;">
+            <p>
+                Motivated and technically inclined Artisan Assistant seeking an Apprenticeship opportunity in Mechanical Engineering (Millwright). 
+                I have hands-on experience assisting with mechanical, electrical, HVAC, plumbing, and general building maintenance in a professional hotel environment. 
+                <br><br>
+                <strong>But that's not all.</strong> I also have a passion for Digital Marketing, Social Media, and creating exceptional customer experiences. 
+                I bring a unique blend of technical problem-solving and creative thinking to every team I join.
+            </p>
+        </div>
+    </section>
+
+    <section id="experience" style="background-color: #f0f4f8;">
+        <h2 class="section-title">My Journey</h2>
+        <div class="timeline">
+            
+            <div class="card">
+                <h3>Artisan Assistant</h3>
+                <span class="company">Marriott Hotel | 2026 - Present</span>
+                <ul>
+                    <li>Assisting qualified artisans with mechanical, electrical, plumbing, and HVAC maintenance.</li>
+                    <li>Conducting routine inspections and reporting safety hazards.</li>
+                    <li>Ensuring compliance with health, safety, and operational standards.</li>
+                    <li>Maintaining accurate maintenance logs and job cards.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Engineering Admin Intern</h3>
+                <span class="company">Marriott Hotel | 2023 - 2024</span>
+                <ul>
+                    <li>Assisted technicians with repairs and troubleshooting.</li>
+                    <li>Operated systems such as BMS, Opera, and Transcendent.</li>
+                    <li>Maintained 100% guest satisfaction through quick problem resolution.</li>
+                    <li>Logged work orders, invoices, and maintenance records.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Social Media Manager (Vol)</h3>
+                <span class="company">Black Cops Security | 2024</span>
+                <ul>
+                    <li>Managed all active social media accounts.</li>
+                    <li>Created eye-catching and attractive posts.</li>
+                    <li>Analyzed different marketing strategies to boost engagement.</li>
+                    <li>Collaborated with journalists for PR articles.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Staff Supervisor</h3>
+                <span class="company">Catering Boys | 2022 - 2023</span>
+                <ul>
+                    <li>Managed teams and equipment during large events.</li>
+                    <li>Oversaw logistics and on-site coordination.</li>
+                    <li>Developed strong client relationships leading to repeat business.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">My Toolbox</h2>
+        <div class="skills-container">
+            <div class="skill-pill"><i class="fas fa-bullhorn"></i> Digital Marketing</div>
+            <div class="skill-pill"><i class="fas fa-search"></i> SEO Fundamentals</div>
+            <div class="skill-pill"><i class="fas fa-share-alt"></i> Social Media Strategy</div>
+            <div class="skill-pill"><i class="fas fa-users"></i> Event Management</div>
+            <div class="skill-pill"><i class="fas fa-tools"></i> Mechanical Repairs</div>
+            <div class="skill-pill"><i class="fas fa-bolt"></i> Electrical Basics</div>
+            <div class="skill-pill"><i class="fas fa-file-invoice"></i> Administration</div>
+            <div class="skill-pill"><i class="fas fa-laptop"></i> MS Office Suite</div>
+            <div class="skill-pill"><i class="fas fa-brain"></i> Problem Solving</div>
+        </div>
+    </section>
+
+    <section id="education" style="background-color: #fffbf0;">
+        <h2 class="section-title">Education</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            
+            <div class="edu-item">
+                <h3>Mechanical Engineering N3</h3>
+                <p><strong>Kent Technical College</strong> | 2025</p>
+                <p style="font-size: 0.9rem; color: #666;">Maths, Engineering Science, Drawing, Mechanotechnology</p>
+            </div>
+
+            <div class="edu-item">
+                <h3>Advance Diploma in Tourism Management</h3>
+                <p><strong>Tshwane University of Technology</strong> | 2022</p>
+            </div>
+
+            <div class="edu-item">
+                <h3>National Diploma in Ecotourism Management</h3>
+                <p><strong>Tshwane University of Technology</strong> | 2021</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="achievements">
+        <h2 class="section-title">Highlights</h2>
+        <div class="achievements-grid">
+            <div class="achievement-item">Reduced maintenance response times to < 24hrs at TUT</div>
+            <div class="achievement-item">Maintained 100% guest satisfaction at Marriott</div>
+            <div class="achievement-item">Completed ALX Software Engineer Program</div>
+            <div class="achievement-item">Selected for Jakes Gerwel Fellowship Camp</div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2 style="color: white; font-size: 2.5rem;">I am open for work</h2>
+        <p style="margin-top: 10px; opacity: 0.8;">I'm currently based in Daveyton, South Africa.</p>
+
+        <div class="contact-links">
+            <a href="mailto:Bonginkosimakhubo22@gmail.com" class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>Email Me</span>
+            </a>
+            
+            <a href="tel:0635739933" class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>Call Me</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/bonginkosi-makhubo-46082825a" target="_blank" class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
+            </a>
+        </div>
+
+        <div style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
+            <p>&copy; 2026 Bonginkosi Makhubo☀️</p>
+        </div>
+    </footer>
+
+</body>
+</html>
